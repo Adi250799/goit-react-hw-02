@@ -36,16 +36,12 @@ const App = () => {
       <h1>Sip Happens Café</h1>
       <p>Please leave your feedback about our service by selecting one of the options below.</p>
       <Options
-        onLeaveFeedback={updateFeedback}
-        onResetFeedback={resetFeedback}
-        total={totalFeedback}
+        onFeedbackChange={updateFeedback} // Zmieniono nazwę właściwości
+        onReset={resetFeedback} // Zmieniono nazwę właściwości
+        hasFeedback={totalFeedback > 0} // Przekazanie logicznej wartości
       />
       {totalFeedback > 0 ? (
-        <Feedback
-          feedback={feedback}
-          total={totalFeedback}
-          positivePercentage={positivePercentage}
-        />
+        <Feedback feedback={feedback} />
       ) : (
         <Notification message="No feedback given" />
       )}
